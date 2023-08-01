@@ -1,0 +1,20 @@
+<script>
+const standalone =
+    navigator.standalone ||
+    screen.height - document.documentElement.clientHeight < 40;
+
+if (standalone) {
+    location.href = "twitter://";
+    window.close();
+} else {
+    var ua = window.navigator.userAgent;
+    var iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+    var webkit = !!ua.match(/WebKit/i);
+    var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
+    if (iOSSafari) {
+        document.write("save to home!");
+    } else {
+        document.write("open this link in mobile safari");
+    }
+}
+</script>
